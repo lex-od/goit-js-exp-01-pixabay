@@ -74,16 +74,13 @@ export default {
             return Promise.reject(new Error('unavailable page requested'));
         }
 
-        const page = this.currParams.page + 1;
+        this.currParams.page++;
 
-        return this.getImagesByQuery({ ...this.currParams, page }).then(
-            result => {
-                this.currParams.page++;
-                this._updateLastPage();
+        return this.getImagesByQuery(this.currParams).then(result => {
+            this._updateLastPage(result.totalHits);
 
-                return result;
-            },
-        );
+            return result;
+        });
     },
 
     _updateLastPage(maxCount) {

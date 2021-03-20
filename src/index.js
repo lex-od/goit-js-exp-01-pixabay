@@ -10,12 +10,12 @@ Init();
 
 function Init() {
     pixApi.setStartSearchParams({
-        name: 'microsoft',
+        name: 'cat',
         type: 'photo',
         orientation: 'horizontal',
     });
 
-    pixApi.searchNextPage().then(res => {
-        refs.galleryList.innerHTML = startTpl(res.hits);
+    pixApi.searchNextPage().then(result => {
+        refs.galleryList.innerHTML = startTpl(result.hits);
     });
 }
