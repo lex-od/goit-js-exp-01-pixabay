@@ -1,0 +1,26 @@
+{
+    "CATEGORIES": [
+        "backgrounds",
+        "fashion",
+        "nature",
+        "science",
+        "education",
+        "feelings",
+        "health",
+        "people",
+        "religion",
+        "places",
+        "animals",
+        "industry",
+        "computer",
+        "food",
+        "sports",
+        "transportation",
+        "travel",
+        "buildings",
+        "business",
+        "music"
+    ],
+    "TYPES": ["all", "photo", "illustration", "vector"],
+    "ORIENTATIONS": ["all", "horizontal", "vertical"]
+}
