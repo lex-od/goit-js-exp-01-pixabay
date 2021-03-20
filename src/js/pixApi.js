@@ -4,6 +4,9 @@ export default {
     _ENDPOINT: 'https://pixabay.com/api/',
     _API_KEY: '20679339-fea13a2297aa7649e9595d106',
 
+    isLastPage: false, // Только для чтения
+    currParams: { page: 0, perPage: 20 }, // Только для чтения
+
     _getImages(paramsStr) {
         return fetch(`${this._ENDPOINT}?key=${this._API_KEY}${paramsStr}`).then(
             resp => {
@@ -21,8 +24,8 @@ export default {
         page,
         perPage,
         category,
-        type = 'photo',
-        orientation = 'horizontal',
+        type,
+        orientation,
     } = {}) {
         let paramsStr = '';
 
@@ -50,7 +53,41 @@ export default {
             paramsStr += `&orientation=${orientation}`;
         }
 
-        console.log(paramsStr);
         return this._getImages(paramsStr);
+    },
+
+    setStartSearchParams(paramsObj = {}) {
+        let { page, perPage } = paramsObj;
+
+        page = typeof page === 'number' && page >= 0 ? page : 0;
+        perPage =
+            typeof perPage === 'number' && perPage >= 3 && perPage <= 200
+                ? perPage
+                : 20;
+
+        this.currParams = { ...paramsObj, page, perPage };
+        this.isLastPage = false;
+    },
+
+    searchNextPage() {
+        if (this.isLastPage) {
+            return Promise.reject(new Error('unavailable page requested'));
+        }
+
+        const page = this.currParams.page + 1;
+
+        return this.getImagesByQuery({ ...this.currParams, page }).then(
+            result => {
+                this.currParams.page++;
+                this._updateLastPage();
+
+                return result;
+            },
+        );
+    },
+
+    _updateLastPage(maxCount) {
+        const totalCount = this.currParams.page * this.currParams.perPage;
+        this.isLastPage = totalCount >= maxCount;
     },
 };
