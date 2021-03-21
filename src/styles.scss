@@ -42,7 +42,52 @@ body {
     margin: -15px;
 }
 
-.gallery-list > li {
+.gallery-item {
     width: calc(100% / 4 - 30px);
     margin: 15px;
+    padding: 20px;
+}
+
+.gallery-item.dyn-likes-0 {
+    background-color: rgb(255, 255, 255);
+}
+
+.gallery-item.dyn-likes-1 {
+    background-color: rgb(255, 243, 239);
+}
+
+.gallery-item.dyn-likes-2 {
+    background-color: rgb(255, 227, 219);
+}
+
+.gallery-item.dyn-likes-3 {
+    background-color: rgb(255, 211, 197);
+}
+
+.gallery-item.dyn-likes-4 {
+    background-color: rgb(255, 193, 174);
+}
+
+.gallery-item.dyn-likes-5 {
+    background-color: rgb(255, 149, 117);
+}
+
+.gallery-item.dyn-likes-6 {
+    background-color: rgb(255, 133, 96);
+}
+
+.gallery-item.dyn-likes-7 {
+    background-color: rgb(255, 117, 75);
+}
+
+.gallery-item.dyn-likes-8 {
+    background-color: rgb(255, 99, 51);
+}
+
+.gallery-item.dyn-likes-9 {
+    background-color: rgb(255, 78, 24);
+}
+
+.gallery-item.dyn-likes-10 {
+    background-color: rgb(255, 60, 0);
 }
